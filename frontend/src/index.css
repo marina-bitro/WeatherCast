@@ -1,0 +1,260 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  /* sky gradient */
+  background: linear-gradient(to bottom, #89e8d74b, #acb6e579);
+
+}
+
+.weather-card {
+  border-radius: 20px;
+  width: 90%; 
+  text-align: center;
+}
+
+
+/* Navbar */
+.weatherNavbar {
+  padding: 15px 50px;
+
+  backdrop-filter: blur(10px);
+  background: rgb(167 243 237 / 22%);
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.weatherNavbar h2{
+  text-align: left;
+  margin:0;
+  font-weight:600;
+  color: #59a8af;
+}
+
+
+/* Header Card */
+.header-card{
+  padding: 10px;
+  margin: 10px;
+  background: linear-gradient(to bottom, #89e8d74b, #acb6e579);
+  border-radius: 50px;
+
+}
+
+.weather-card h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: rgb(12 96 134 / 46%);
+  
+}
+
+.weather-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.weather-info h2 {
+  font-size: 3rem;
+  margin: 0.5rem 0;
+  color: rgb(12 96 134 / 46%);
+}
+
+.weather-info p {
+  font-size: 1.1rem;
+  color: rgb(12 96 134 / 46%);
+  margin-top: 0.3rem;
+}
+
+
+/* Scroll horizontally */
+.hourly-scroll {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  overflow-x: auto;
+  padding: 1rem 0;
+  gap: 0.5rem;
+  margin-left: 5px;
+}
+
+.hourly-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.hourly-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hourly-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #89e8d74b, #acb6e579);
+  border-radius: 10px;
+}
+
+.hour-card {
+  flex: 0 0 auto;
+  width: 58px;
+  margin-right: 10px;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 12px;
+  border: solid 2px lightblue;
+  margin: 10px;
+  transition: transform 0.25s ease;
+}
+
+.hour-card:hover {
+
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 4px 10px rgb(188, 196, 226);
+
+
+}
+
+/* Daily List */
+
+.daily-list {
+  display: flex;
+  flex-direction: column;
+  border-radius: 50px;
+  padding: 10px;
+  margin-top: 20px;
+  background: linear-gradient(to bottom, #eafaf7ca, #d3d9f079);
+}
+
+.daily-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 1.5rem;
+  background: #dceeff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgb(188, 196, 226);
+  transition: transform 0.2s ease;
+  margin:10px;
+}
+
+.daily-card:hover {
+  transform: translateY(-4px);
+}
+
+
+
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+
+/* Fetching data animation */
+.loading-container{
+  position: relative;
+  height: 120px;
+  width: 250px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.runner{
+  position: absolute;
+  font-size: 40px;
+  animation: run 2s linear infinite;
+  transform: scaleX(-1);
+}
+
+.cloud{
+  position: absolute;
+  right: 0;
+  font-size: 45px;
+  animation: cloudMove 2s linear infinite;
+}
+
+@keyframes run{
+  0%{
+    left:0;
+  }
+  100%{
+    left:180px;
+  }
+}
+
+@keyframes cloudMove{
+  0%{
+    right:0;
+  }
+  100%{
+    right:180px;
+  }
+}
+/* --- */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: rgba(25, 102, 138, 0.933);
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
