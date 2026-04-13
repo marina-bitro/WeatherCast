@@ -45,8 +45,7 @@
 #         id: deployment
 #         uses: actions/deploy-pages@v5
 
-
-name: Deploy React app to Pages
+name: Deploy static content to Pages
 
 on:
   push:
@@ -58,11 +57,18 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -89,8 +95,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Εδώ βάζουμε τον φάκελο που δημιουργεί το build (συνήθως 'dist' ή 'build')
-          path: 'frontend/dist' 
+          # Εδώ προσέχουμε: Αν έχεις Vite βάλε 'frontend/dist', αν έχεις CRA βάλε 'frontend/build'
+          path: 'frontend/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
